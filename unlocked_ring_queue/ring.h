@@ -9,7 +9,9 @@
 #ifndef __RING_H__
 #define __RING_H__
 
+#include <stdio.h>
 #include <stdint.h>
+#include <assert.h>
 
 #include "util.h"
 
@@ -34,7 +36,7 @@ struct ring {
 extern struct ring *ring_init(size_t cap);
 extern int ring_fini(struct ring *ring);
 
-static INLINE int ring_write(struct ring *ring, void *data[], int nums)
+static INLINE size_t ring_write(struct ring *ring, void *data[], size_t nums)
 {
 	assert(ring && data);
 
@@ -70,7 +72,7 @@ static INLINE int ring_write(struct ring *ring, void *data[], int nums)
 	return nums;
 }
 
-static INLINE int ring_read(struct ring *ring, void *data[], int nums)
+static INLINE size_t ring_read(struct ring *ring, void *data[], size_t nums)
 {
 	assert(ring && data);
 

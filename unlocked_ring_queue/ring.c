@@ -6,7 +6,9 @@
 	> Created Time: Sun 11 Dec 2022 07:57:45 PM HKT
  ************************************************************************/
 
+#include <stdlib.h>
 #include <assert.h>
+#include <string.h>
 
 #include "ring.h"
 
@@ -23,10 +25,10 @@ struct ring *ring_init(size_t cap)
 		return NULL;
 	}
 
-	ring->r.cap = ring.w.cap = cap;
-	ring->r.mask = ring.w.mask = cap - 1;
-	ring->r.head = ring.w.head = 0;
-	ring->w.tail = ring.w.tail = 0;
+	ring->r.cap = ring->w.cap = cap;
+	ring->r.mask = ring->w.mask = cap - 1;
+	ring->r.head = ring->w.head = 0;
+	ring->r.tail = ring->w.tail = 0;
 	memset(ring->data, 0, size);
 
 	return ring;

@@ -16,17 +16,18 @@
 #define EXCLUSIVE_CACHE_LINE __attribute__((aligned(CACHE_LINE)))
 #define INLINE __inline__ __attribute__((always_inline))
 #define BCAS(p, o, n) __sync_bool_compare_and_swap(p, o, n)
+#define UNUSED(v) ((void) (v))
 #define MIN(first, second) \
 	({ \
 		typeof(first) _first = (first); \
 		typeof(second) _second = (second); \
-		_first > _second ? _second : _first; \
+		(_first > _second) ? _second : _first; \
 	})
 #define MAX(first, second) \
-	({
+	({ \
 		typeof(first) _first = (first); \
 		typeof(second) _second = (second); \
-		_first > _second ? _first : _second; \
+		(_first > _second) ? _first : _second; \
 	})
 
 #endif

@@ -12,7 +12,12 @@
 #include <errno.h>
 #include <unistd.h>
 
-int main(int argc, char *argv)
+#include "util.h"
+
+int main(int argc, char *argv[])
 {
+    UNUSED(argc);
+    UNUSED(argv);
+
     return EXIT_SUCCESS;
 }
