@@ -1,12 +1,14 @@
 
+TOP = ./..
 CC = gcc
 CFLAGS = -g -Wall -Werror -Wextra
 TARGET = main
-LINK =
-OBJ = main.c ring.c ring.h
+OBJ = $(wildcard *.c)
+INC = -I $(TOP)/include
+LINK = 
 
 all:
-	$(CC) $(CFLAGS) -o$(TARGET) $(OBJ) $(LINK)
+	$(CC) $(CFLAGS) -o$(TARGET) $(OBJ) $(INC) $(LINK)
 
 test:
 	./$(TARGET)
