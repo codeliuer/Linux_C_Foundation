@@ -31,4 +31,3 @@
 #define ATOMIC_BARRIER() __sync_synchronize()
 
 #endif
-

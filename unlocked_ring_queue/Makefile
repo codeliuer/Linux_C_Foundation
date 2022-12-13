@@ -3,12 +3,12 @@ TOP = ./..
 CC = gcc
 CFLAGS = -g -Wall -Werror -Wextra
 TARGET = main
-OBJ = $(wildcard *.c)
+SRC = $(wildcard *.c)
 INC = -I $(TOP)/include
-LINK = 
+LINK = -lpthread
 
 all:
-	$(CC) $(CFLAGS) -o$(TARGET) $(OBJ) $(INC) $(LINK)
+	$(CC) $(CFLAGS) -o$(TARGET) $(SRC) $(INC) $(LINK)
 
 test:
 	./$(TARGET)

@@ -9,12 +9,16 @@
 #define __UTIL_H__
 
 #define CACHE_LINE 64
+
+#define UNUSED(v) ((void) (v))
+
 #define LIKELY(x) __builtin_expect(!!(x), 1)
 #define UNLIKELY(x) __builtin_expect(!!(x), 0)
-#define PAUSE() asm volatile("pause":::"memory")
-#define EXCLUSIVE_CACHE_LINE __attribute__((aligned(CACHE_LINE)))
 #define INLINE __inline__ __attribute__((always_inline))
-#define UNUSED(v) ((void) (v))
+
+#define PAUSE() asm volatile("pause":::"memory")
+
+#define EXCLUSIVE_CACHE_LINE __attribute__((aligned(CACHE_LINE)))
 
 #define MIN(first, second) \
 	({ \

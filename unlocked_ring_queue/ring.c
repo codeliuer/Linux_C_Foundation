@@ -14,7 +14,9 @@
 
 struct ring *ring_init(size_t cap)
 {
-	assert(cap && !(cap & (cap - 1)));
+	if (!cap || (cap & (cap - 1))) {
+		return NULL;
+	}
 
 	int ret = 0;
 	struct ring *ring = NULL;
@@ -36,7 +38,9 @@ struct ring *ring_init(size_t cap)
 
 int ring_fini(struct ring *ring)
 {
-	assert(ring);
+	if (!ring) {
+		return -1;
+	}
 
 	if (ring->w.head != ring->w.tail
 		|| ring->w.tail != ring->r.head
